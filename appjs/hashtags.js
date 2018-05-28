@@ -36,21 +36,21 @@ function drawChart() {
 
     // Create our data table out of JSON data loaded from server.
     var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Parts');
-    data.addColumn('number', 'Stock');
+    data.addColumn('string', 'hashtag');
+    data.addColumn('number', 'Tags');
     data.addRows(reformatData(JSON.parse(jsonData)));
 
     var options = {
-        title: 'Stock Parts by Id/name',
+        title: 'Trending Topics',
         width: 400,
         height: 300,
         chartArea: {width: '50%'},
         hAxis: {
-            title: 'Total Number',
+            title: 'Hashtag',
             minValue: 0
         },
         vAxis: {
-            title: 'Part'
+            title: 'Messages Tagged'
         }
     };
 
