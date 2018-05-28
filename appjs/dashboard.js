@@ -16,6 +16,8 @@ google.charts.setOnLoadCallback(likeChart);
 
 google.charts.setOnLoadCallback(dislikeChart);
 
+google.charts.setOnLoadCallback(topUserChart);
+
 function reformatData(jsonData){
     var temp= jsonData.Result;
     console.log("temp: " + JSON.stringify(temp));
@@ -50,9 +52,9 @@ function hashtagChart() {
 
     var options = {
         title: 'Trending Topics',
-        width: 400,
-        height: 300,
-        chartArea: {width: '50%'},
+        width: 600,
+        height: 450,
+        chartArea: {width: '60%'},
         hAxis: {
             title: 'Hashtag',
             minValue: 0
@@ -83,9 +85,9 @@ function messageChart() {
 
     var options = {
         title: 'Messages Per Day',
-        width: 400,
-        height: 300,
-        chartArea: {width: '50%'},
+        width: 600,
+        height: 450,
+        chartArea: {width: '60%'},
         color: 'red',
         hAxis: {
             title: 'Date',
@@ -117,9 +119,9 @@ function replyChart() {
 
     var options = {
         title: 'Replies Per Day',
-        width: 400,
-        height: 300,
-        chartArea: {width: '50%'},
+        width: 600,
+        height: 450,
+        chartArea: {width: '60%'},
         hAxis: {
             title: 'Date',
             minValue: 0
@@ -150,9 +152,9 @@ function likeChart() {
 
     var options = {
         title: 'Likes Per Day',
-        width: 400,
-        height: 300,
-        chartArea: {width: '50%'},
+        width: 600,
+        height: 450,
+        chartArea: {width: '60%'},
         hAxis: {
             title: 'Date',
             minValue: 0
@@ -183,9 +185,9 @@ function dislikeChart() {
 
     var options = {
         title: 'Dislikes Per Day',
-        width: 400,
-        height: 300,
-        chartArea: {width: '50%'},
+        width: 600,
+        height: 450,
+        chartArea: {width: '60%'},
         hAxis: {
             title: 'Date',
             minValue: 0
@@ -196,6 +198,39 @@ function dislikeChart() {
     };
 
     var chart = new google.visualization.ColumnChart(document.getElementById('dislike_chart_div'));
+    chart.draw(data, options);
+}
+
+function topUserChart() {
+    var jsonData = $.ajax({
+        url: "http://localhost:5000/MessageApp/dashboard/todaystopusers",
+        dataType: "json",
+        async: false
+    }).responseText;
+
+    console.log("jsonData: " + JSON.parse(jsonData));
+
+    // Create our data table out of JSON data loaded from server.
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'User');
+    data.addColumn('number', 'Posts');
+    data.addRows(reformatData(JSON.parse(jsonData)));
+
+    var options = {
+        title: 'Today\'s Top Users',
+        width: 600,
+        height: 450,
+        chartArea: {width: '60%'},
+        hAxis: {
+            title: 'Username',
+            minValue: 0
+        },
+        vAxis: {
+            title: 'Activity'
+        }
+    };
+
+    var chart = new google.visualization.ColumnChart(document.getElementById('user_chart_div'));
     chart.draw(data, options);
 }
 
