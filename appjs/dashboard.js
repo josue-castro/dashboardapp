@@ -97,7 +97,7 @@ function messageChart() {
         vAxis: {
             title: 'Total Messages Posted'
         },
-        colors:['orange']
+        colors:['#ffa500']
     };
 
     var chart = new google.visualization.ColumnChart(document.getElementById('message_chart_div'));
