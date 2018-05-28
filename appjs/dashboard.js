@@ -61,7 +61,8 @@ function hashtagChart() {
         },
         vAxis: {
             title: 'Messages Tagged'
-        }
+        },
+        colors:['#8a63cc']
     };
 
     var chart = new google.visualization.ColumnChart(document.getElementById('hashtag_chart_div'));
@@ -95,7 +96,8 @@ function messageChart() {
         },
         vAxis: {
             title: 'Total Messages Posted'
-        }
+        },
+        colors:['orange']
     };
 
     var chart = new google.visualization.ColumnChart(document.getElementById('message_chart_div'));
@@ -128,7 +130,8 @@ function replyChart() {
         },
         vAxis: {
             title: 'Total Replies'
-        }
+        },
+        colors:['#cccc11']
     };
 
     var chart = new google.visualization.ColumnChart(document.getElementById('reply_chart_div'));
@@ -161,7 +164,8 @@ function likeChart() {
         },
         vAxis: {
             title: 'Total Likes'
-        }
+        },
+        colors:['#5acc48']
     };
 
     var chart = new google.visualization.ColumnChart(document.getElementById('like_chart_div'));
@@ -194,7 +198,8 @@ function dislikeChart() {
         },
         vAxis: {
             title: 'Total Dislikes'
-        }
+        },
+        colors:['#cc3e47']
     };
 
     var chart = new google.visualization.ColumnChart(document.getElementById('dislike_chart_div'));
@@ -227,7 +232,8 @@ function topUserChart() {
         },
         vAxis: {
             title: 'Activity'
-        }
+        },
+        colors:['#2742cc']
     };
 
     var chart = new google.visualization.ColumnChart(document.getElementById('user_chart_div'));
